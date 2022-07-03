@@ -76,12 +76,7 @@ public class CashMachine {
             }
 
         }
-        return sumOfWithdraws;
-    }
-
-
-    public int[] getValues() {
-        return values;
+        return sumOfWithdraws * -1;
     }
 }
 

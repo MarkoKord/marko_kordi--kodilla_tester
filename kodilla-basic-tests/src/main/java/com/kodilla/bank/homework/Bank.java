@@ -26,34 +26,43 @@ public class Bank {
         return balance;
     }
 
-    public double getAverageOfDeposits() {    //ŚREDNIA WARTOSC WPLATY
-        double sumAdd = 0;
+    public int countDeposits() {
         int count = 0;
-        int transactions[];
-        for (CashMachine cashMachine : this.cashMachines) {
-           transactions = cashMachine.getValues();
-           for(int i=0 ; i<cashMachine.getValues().length ; i++) {
-               if(transactions[i] > 0) {
-                   count++;
-                   sumAdd =
-
-
-               }
-
-
-
-           }
-
-            }
+        for (CashMachine machine : this.cashMachines) {
+            count += machine.getNumberOfDeposit();
         }
+        return count;
+    }
 
-
-
-    public double getAverageOfWithdraws() {  //SREDNIA WARTOSC WYPLATY
-        double average = 0;
-        for (CashMachine cashMachine : this.cashMachines) {
-            average = cashMachine.getSumOfWithdraw() / cashMachine.getNumberOfWithdraws();
+    public int countWithdraws() {
+        int count = 0;
+        for (CashMachine machine : this.cashMachines) {
+            count += machine.getNumberOfWithdraws();
         }
-        return average;
+        return count;
+    }
+
+    public double sumOfDeposits() {
+        double sum = 0;
+        for (CashMachine machine : this.cashMachines) {
+            sum += machine.getSumOfDeposit();
+        }
+        return sum;
+    }
+
+    public double sumOfWithdraws() {
+        double sum = 0;
+        for (CashMachine machine : this.cashMachines) {
+            sum += machine.getSumOfWithdraw();
+        }
+        return sum;
+    }
+
+    public double calculateAverageDeposits() {
+        return sumOfDeposits()/countDeposits();
+    }
+
+    public double calculateAverageWithdraws() {
+        return sumOfWithdraws()/countWithdraws();
     }
 }
