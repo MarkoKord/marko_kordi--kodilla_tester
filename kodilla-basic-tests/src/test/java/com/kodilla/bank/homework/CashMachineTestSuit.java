@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class CashMachineTestSuit {
 
 
+
+
     @Test
     public void TestGetTrans_shouldHaveZeroValues() {
         CashMachine cashMachine = new CashMachine();
@@ -43,25 +45,17 @@ class CashMachineTestSuit {
         assertEquals(3, values);
 
     }
-    @Test
-    public void TestAverageOfDeposits_ShouldShowAverageOfDeposits() {
-        CashMachine cashMachine = new CashMachine();
-        cashMachine.addTransaction(100);
-        cashMachine.addTransaction(100);
-        cashMachine.addTransaction(100);
-        cashMachine.addTransaction(0);
-        double values = cashMachine.getBalance() / cashMachine.getNumberOfDeposit();
-        assertEquals(100, values, 1);
-    }
+
     @Test
     public void TestAverageOfWithdraws_ShouldShowAverageOfWithdraws() {
-        CashMachine cashMachine = new CashMachine();
-        cashMachine.addTransaction(-300);
-        cashMachine.addTransaction(-400);
-        cashMachine.addTransaction(-200);
-        double values = cashMachine.getBalance() / cashMachine.getNumberOfWithdraws();
-        assertEquals(-300, values, 5);
+        CashMachine bankomat = new CashMachine();
+        bankomat.addTransaction(-200);
+        bankomat.addTransaction(-300);
+        bankomat.addTransaction(-400);
+
+        Bank bank = bank.addCashMachine(bankomat);
+     double result = bank.calculateAverageWithdraws();
+       assertEquals(-250, result);
+
     }
-
-
 }
