@@ -11,14 +11,15 @@ class WarehouseAppTestSuite {
     public void getOrderTest_ExistOrder() throws OrderDoesentExistException {
         Warehouse warehouse = new Warehouse();
         warehouse.addOrder(new Order("5"));
-        warehouse.getOrder("5");
-        assertEquals("5", "5");
+        String result = warehouse.getOrder("5").getNumber();
+        assertEquals("5",  result);
 
     }
 
     @Test
     public void getOrderTest_withThrowException()  {
         Warehouse warehouse = new Warehouse();
+
         assertThrows(OrderDoesentExistException.class, () -> warehouse.getOrder("10"));
 
 
