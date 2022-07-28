@@ -11,15 +11,19 @@ public class Calculator {
         this.display = display;
     }
     public double add(double a, double b) {
-        return this.display.displayResult(a + b);
+        this.display.displayResult(a + b);
+        return a + b;
     }
     public double subtract(double a, double b) {
-        return this.display.displayResult( a - b);
+         this.display.displayResult( a - b);
+         return a-b;
     }
     public double multiply(double a, double b) {
-        return this.display.displayResult(a * b);
+        this.display.displayResult(a * b);
+        return  a * b;
     }
     public double divide(double a, double b) {
-        return this.display.displayResult(a / b);
+        this.display.displayResult(a / b);
+        return a / b;
     }
 }
