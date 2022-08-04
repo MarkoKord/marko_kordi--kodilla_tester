@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.mockito.Mockito.times;
 
 
 class BookControllerTestSuite {
@@ -36,16 +37,10 @@ class BookControllerTestSuite {
         //given
         BookService bookServiceMock = Mockito.mock(BookService.class);
         BookController bookController = new BookController(bookServiceMock);
-        BookDto bookDto = Mockito.mock(BookDto.class);
-        List<BookDto> bookList = new ArrayList<>();
-        Mockito.when(bookServiceMock.getBooks()).thenReturn(bookList);
 
-        //when
-        bookList.add(bookDto);
-        bookList.add(bookDto);
+        bookController.addBook(new BookDto("first", "second"));
 
-        //then
-        assertThat(bookController.getBooks()).hasSize(2);
+Mockito.verify(bookServiceMock, times(1)).addBook(new BookDto("first", "second"));
 
 
     }
