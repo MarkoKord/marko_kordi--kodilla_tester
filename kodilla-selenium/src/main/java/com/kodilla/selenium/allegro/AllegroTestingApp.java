@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class AllegroTestingApp {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "c:\\selenium-drivers\\chrome\\chromedriver.exe");
@@ -14,18 +16,26 @@ public class AllegroTestingApp {
         driver.get("https://www.ebay.com");
 
 
-        WebElement category = driver.findElement(By.xpath("//*[@id=\"gh-cat-td\"]/div/select"));
+        WebElement category = driver.findElement(By.cssSelector("#gh-cat"));
         Select type = new Select(category);
         type = new Select(category);
         type.selectByIndex(6);
 
-
-        WebElement itemName = driver.findElement(By.xpath("//*[@id=\"gh-ac-box\"]/div/input"));
+        WebElement itemName = driver.findElement(By.cssSelector("#gh-ac"));
         itemName.sendKeys("mini mavic");
 
+        WebElement clickButton = driver.findElement(By.cssSelector("#gh-btn"));
+        clickButton.click();
+
         Thread.sleep(2000);
-      WebElement clickButton = driver.findElement(By.xpath("//*[@id=\"gh-btn\"]"));
-      clickButton.click();
+
+
+        List<WebElement> elementFound = driver.findElements(By.cssSelector("#srp-river-results > ul > li"));
+for(WebElement element : elementFound) {
+    System.out.println(element.getText());
+}
+
+
 
 
 
