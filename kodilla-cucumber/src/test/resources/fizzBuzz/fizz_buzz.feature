@@ -5,8 +5,8 @@ Feature: Fizz Buzz
     When Check if the number is divisible by 3 and 5
     Then Should get an answer which is: <answer>
     Examples:
-      | number | answer |
-      | 3 | "Fizz" |
-      | 5 | "Buzz" |
-      | 15 | "FizzBuzz" |
-      | 13 | "None" |
+      | number | answer     |
+      | 3      | "Fizz"     |
+      | 5      | "Buzz"     |
+      | 15     | "FizzBuzz" |
+      | 13     | "None"     |
