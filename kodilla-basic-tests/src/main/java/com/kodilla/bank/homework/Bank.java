@@ -5,7 +5,7 @@ public class Bank {
     public CashMachine[] cashMachines;
 
     public Bank() {
-
+        this.cashMachines = new CashMachine[0];
 
     }
 
@@ -13,15 +13,15 @@ public class Bank {
     public void addCashMachine(CashMachine machine) {   //TABLICA BANKOMATÓW
         this.size++;                                                               //inkrementacja dodanie do tabeli kolejnego banku
         CashMachine[] newTab = new CashMachine[this.size];                         //utworzenie tabeli
-        System.arraycopy(cashMachines, 0, newTab, 0, this.size);
+        System.arraycopy(cashMachines, 0, newTab, 0, this.cashMachines.length);
         newTab[this.size - 1] = machine;                                           // przypisanie elementu do ostatniego indeksu tabeli (machine- nazwa zmienna tabeli)
         this.cashMachines = newTab;                                                // cashMachines = nowa tabela
     }
 
-    public int totalBalance() {  //CAŁKOWITY BALANS ZE WSZYSTKICH BANKOMATOW
+    public int totalBalance() {
         int balance = 0;
         for (CashMachine cashMachine : this.cashMachines) {
-            balance = cashMachine.getBalance();
+            balance += cashMachine.getBalance();
         }
         return balance;
     }
@@ -59,10 +59,10 @@ public class Bank {
     }
 
     public double calculateAverageDeposits() {
-        return sumOfDeposits()/countDeposits();
+        return sumOfDeposits() / countDeposits();
     }
 
     public double calculateAverageWithdraws() {
-        return sumOfWithdraws()/countWithdraws();
+        return sumOfWithdraws() / countWithdraws();
     }
 }

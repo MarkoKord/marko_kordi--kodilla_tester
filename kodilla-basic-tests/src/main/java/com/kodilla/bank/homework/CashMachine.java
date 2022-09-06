@@ -78,5 +78,7 @@ public class CashMachine {
         }
         return sumOfWithdraws * -1;
     }
+
+
 }
 
